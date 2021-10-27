@@ -10,6 +10,11 @@
 		
 		<center>
 
+		<img width="80%" src="imagens/principal.jpg"> 
+		
+		<br>
+		<br>
+		
 		<hr>
 		<h1>Bem vindo à Pizzaria Brasileira</h1>
 		<hr>		
@@ -27,9 +32,8 @@
 			<tr bgcolor="#DDDDDD">
 				<th>Sabor</th>
 				<th>Ingredientes</th>
-				<th>Gigante</th>
-				<th>Grande</th>
-				<th>Média</th>
+				<th>Tamanho</th>
+				<th>Preço (R$)</th>
 			</tr>
 			
 			<?php
@@ -66,9 +70,8 @@
 						echo "<tr>\n";
 						echo "<td align='center'><b><br>". $row["sabor"] . "</b> <br><br> <img width='50%' src='imagens/sabores/". $row["imagem"] . "'> <br><br> </td>\n";
 						echo "<td>" . $row["ingredientes"] . "</td>\n";
-						echo "<td> R$ " . $row["preco_gigante"] . "</td>\n";
-						echo "<td> R$ " . $row["preco_grande"] . "</td>\n";
-						echo "<td> R$ " . $row["preco_media"] . "</td>\n";
+						echo "<td>" . $row["tamanho"] . "</td>\n";
+						echo "<td>" . $row["preco"] . "</td>\n";
 						echo "</tr>\n";
 					}
 			

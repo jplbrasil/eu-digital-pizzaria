@@ -38,18 +38,13 @@
 				</tr>
 
 				<tr>
-					<td>R$ Gigante</td>
-					<td><input type="text" name="preco_gigante"></td>
+					<td>Tamanho</td>
+					<td><input type="text" name="tamanho"></td>
 				</tr>
 
 				<tr>
-					<td>R$ Grande</td>
-					<td><input type="text" name="preco_grande"></td>
-				</tr>
-
-				<tr>
-					<td>R$ Média</td>
-					<td><input type="text" name="preco_media"></td>
+					<td>Preço (R$)</td>
+					<td><input type="text" name="preco"></td>
 				</tr>
 			
 			</table>

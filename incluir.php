@@ -38,13 +38,12 @@
 			}
 			//echo "Conexão com o banco de dados realizada com sucesso! (base de dados = " . $dbname . ")\n";
 
-			$sql = "INSERT INTO pizza (sabor, imagem, ingredientes, preco_gigante, preco_grande, preco_media) VALUES (";
+			$sql = "INSERT INTO pizza (sabor, imagem, ingredientes, tamanho, preco) VALUES (";
 			$sql .= "'". $_REQUEST['sabor'] . "'";
 			$sql .= ", '". $_REQUEST['imagem'] . "'";
 			$sql .= ", '". $_REQUEST['ingredientes'] . "'";
-			$sql .= ", '". $_REQUEST['preco_gigante'] . "'";
-			$sql .= ", '". $_REQUEST['preco_grande'] . "'";
-			$sql .= ", '". $_REQUEST['preco_media'] . "'";
+			$sql .= ", '". $_REQUEST['tamanho'] . "'";
+			$sql .= ", '". $_REQUEST['preco'] . "'";
 			$sql .= ")";
 
 			if ($conn->query($sql) === TRUE)
