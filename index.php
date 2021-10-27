@@ -10,7 +10,7 @@
 		
 		<center>
 
-		<img width="80%" src="imagens/principal.jpg"> 
+		<img src="imagens/principal.jpg"> 
 		
 		<br>
 		<br>
