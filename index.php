@@ -33,13 +33,28 @@
 			</tr>
 			
 			<?php
+
+				/* Dados para conexao em base de dados local
 				$servername = "localhost";
 				$username = "root";
 				$password = "";
 				$dbname = "pizzaria";
-
+				
 				// Create connection
 				$conn = new mysqli($servername, $username, $password, $dbname);
+
+				//*/
+
+				///* Dados para conexao 'a base de dados da nuvem Heroku, aplicativo eu-digital-pizzaria
+				$servername = "mysql://bff01010138ab1:e04e9d48@us-cdbr-east-04.cleardb.com/heroku_264338b10d713e0?reconnect=true";
+				$username = "bff01010138ab1";
+				$password = "e04e9d48";
+				//$dbname = "pizzaria";
+
+				// Create connection
+				$conn = new mysqli($servername, $username, $password);
+
+				//*/
 
 				// Check connection
 				if ($conn->connect_error) {
