@@ -1,3 +1,7 @@
+<?php
+	require("banco_dados.php");
+?>
+
 <html>
 
 	<head>
@@ -29,7 +33,22 @@
 
 				<tr>
 					<td>Imagem</td>
-					<td><input type="text" name="imagem"></td>
+					<td>
+						<select name="imagem">
+							<option value="a_moda.jpg">a_moda.jpg</option>
+							<option value="calabresa.jpg">calabresa.jpg</option>
+							<option value="carne_seca.jpg">carne_seca.jpg</option>
+							<option value="champignon.jpg">champignon.jpg</option>
+							<option value="frango_bolonhesa.jpg">frango_bolonhesa.jpg</option>
+							<option value="frango_catupiry.jpg">frango_catupiry.jpg</option>
+							<option value="marguerita.jpg">marguerita.jpg</option>
+							<option value="milho_bacon.jpg">milho_bacon.jpg</option>
+							<option value="mussarela.jpg">mussarela.jpg</option>
+							<option value="palmito.jpg">palmito.jpg</option>
+							<option value="portuguesa.jpg">portuguesa.jpg</option>
+							<option value="quatro_queijos.jpg">quatro_queijos.jpg</option>
+						</select>
+					</td>
 				</tr>
 
 				<tr>
@@ -39,7 +58,12 @@
 
 				<tr>
 					<td>Tamanho</td>
-					<td><input type="text" name="tamanho"></td>
+					<td>
+						<input type="radio" name="tamanho" value="Gigante">Gigante</input>
+						<input type="radio" name="tamanho" value="Grande">Grande</input>
+						<input type="radio" name="tamanho" value="Média">Média</input>
+						<input type="radio" name="tamanho" value="Pequena">Pequena</input>
+					</td>	
 				</tr>
 
 				<tr>
@@ -63,35 +87,14 @@
 	
 			<tr>
 				<th>Sabor</th>
+				<th>Tamanho</th>
+				<th>Preco</th>
 				<th>Ação</th>
 			</tr>
 			
 			<?php
-
-				/* Dados para conexao em base de dados local
-				$servername = "localhost";
-				$username = "root";
-				$password = "";
-				$dbname = "pizzaria";
-				//*/
-
-				///* Dados para conexao 'a base de dados da nuvem Heroku, aplicativo eu-digital-pizzaria
-				$servername = "us-cdbr-east-04.cleardb.com";
-				$username = "bff01010138ab1";
-				$password = "e04e9d48";
-				$dbname = "heroku_264338b10d713e0";
-				//*/
-				
-				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
-
-				// Check connection
-				if ($conn->connect_error) {
-					die("Erro na conexão com banco de dados: " . $conn->connect_error . "\n");
-				}
-				//echo "Conexão com o banco de dados realizada com sucesso! (base de dados = " . $dbname . ")\n";
-
-				$sql = "SELECT id, sabor FROM pizza";
+			
+				$sql = "SELECT id, sabor, tamanho, preco FROM pizza";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -99,6 +102,8 @@
 					while($row = $result->fetch_assoc()) {
 						echo "<tr>\n";
 						echo "<td>" . $row["sabor"] . "</td>\n";
+						echo "<td>" . $row["tamanho"] . "</td>\n";
+						echo "<td>" . $row["preco"] . "</td>\n";
 						echo "<td><a href='excluir.php?id=" . $row["id"] . "'>&nbsp &nbsp Excluir &nbsp &nbsp</a></td>\n";
 						echo "</tr>\n";
 					}
