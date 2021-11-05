@@ -74,7 +74,7 @@
 		<br>
 		
 		<center>
-		<a href="cadastro.php">Tela de Cadastro de Produtos</a>
+		<a href="produto/cadastro.php">Tela de Cadastro de Produtos</a>
 		</center>
 
 
