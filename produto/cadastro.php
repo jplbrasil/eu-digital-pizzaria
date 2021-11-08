@@ -15,7 +15,7 @@
 		<center>
 
 		<hr>
-		<h1>Pizzaria Brasileira - Cadastro de Produtos</h1>
+		<h2>Pizzaria Brasileira - Cadastro de Produtos</h2>
 		<hr>		
 		
 		</center>
@@ -100,7 +100,7 @@
 			
 			<?php
 			
-				$sql = "SELECT id, sabor, tamanho, preco FROM pizza";
+				$sql = "SELECT id, sabor, tamanho, preco FROM produto";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {

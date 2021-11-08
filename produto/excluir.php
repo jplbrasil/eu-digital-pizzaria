@@ -15,17 +15,17 @@
 		<center>
 
 		<hr>
-		<h1>Pizzaria Brasileira - Cadastro de Produtos</h1>
+		<h2>Pizzaria Brasileira - Cadastro de Produtos</h2>
 		<hr>		
 	
 		<?php
 
-			$sql = "DELETE FROM pizza WHERE id = '" . $_REQUEST['id'] . "'";
+			$sql = "DELETE FROM produto WHERE id = '" . $_REQUEST['id'] . "'";
 
 			if ($conn->query($sql) === TRUE)
 				echo "Produto excluído com sucesso!";
 			else
-				echo "Falha ao incluir produto: " . $sql . "<br>" . $conn->error;
+				echo "Falha ao excluir produto: " . $sql . "<br>" . $conn->error;
 
 			$conn->close();
 			

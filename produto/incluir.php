@@ -15,12 +15,12 @@
 		<center>
 
 		<hr>
-		<h1>Pizzaria Brasileira - Cadastro de Produtos</h1>
+		<h2>Pizzaria Brasileira - Cadastro de Produtos</h2>
 		<hr>		
 	
 		<?php
 
-			$sql = "INSERT INTO pizza (sabor, imagem, ingredientes, tamanho, preco) VALUES (";
+			$sql = "INSERT INTO produto (sabor, imagem, ingredientes, tamanho, preco) VALUES (";
 			$sql .= "'". $_REQUEST['sabor'] . "'";
 			$sql .= ", '". $_REQUEST['imagem'] . "'";
 			$sql .= ", '". $_REQUEST['ingredientes'] . "'";
