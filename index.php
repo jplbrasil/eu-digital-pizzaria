@@ -20,10 +20,10 @@
 		<br>
 		
 		<hr>
-		<h1>Bem vindo à Pizzaria Brasileira</h1>
+		<h2>Bem vindo à Pizzaria Brasileira</h2>
 		<hr>		
 		
-		<h2>Escolha um de nossos deliciosos sabores e faça seu pedido!</h2>
+		<h3>Escolha um de nossos deliciosos sabores e faça seu pedido!</h3>
 		
 		<p>Nossas pizzas são preparadas com ingredientes super selecionados e possuem um sabor sem igual! Confira!</p>
 	
@@ -39,6 +39,7 @@
 	
 			<tr bgcolor="#DDDDDD">
 				<th>Sabor</th>
+				<th>Imagem</th>				
 				<th>Ingredientes</th>
 				<th>Tamanho</th>
 				<th>Preço (R$)</th>
@@ -50,14 +51,15 @@
 			
 			<?php
 
-				$sql = "SELECT * FROM pizza";
+				$sql = "SELECT * FROM produto";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 
 					while($row = $result->fetch_assoc()) {
 						echo "<tr>\n";
-						echo "<td align='center' width='100px'> <br>" . $row["sabor"] . "</b> <br> <img width='90%' src='imagens/sabores/". $row["imagem"] . "'> <br> </td>\n";
+						echo "<td align='center'>" . $row["sabor"] . "</td>\n";
+						echo "<td align='center'>" . "<img width='50%' src='imagens/sabores/". $row["imagem"] . "'></td>\n";
 						echo "<td align='center'>" . $row["ingredientes"] . "</td>\n";
 						echo "<td align='center'>" . $row["tamanho"] . "</td>\n";
 						echo "<td align='center'>" . $row["preco"] . "</td>\n";
@@ -90,6 +92,11 @@
 		<a href="produto/cadastro.php">Tela de Cadastro de Produtos</a>
 		</center>
 
+		<br>
+		
+		<center>
+		<a href="cliente/cadastro.php">Tela de Cadastro de Clientes</a>
+		</center>
 
 	</body>
 
