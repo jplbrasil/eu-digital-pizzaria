@@ -83,6 +83,12 @@
 
 		<br>
 		
+		<center>
+		<a href="../index.php">Voltar para a Homepage</a>
+		</center>
+
+		<br> <hr> <br>
+		
 		<table border=1 align="center">
 	
 			<tr>
@@ -116,13 +122,7 @@
 			?>
 
 		</table>
-		
-		<br>
-		
-		<center>
-		<a href="../index.php">Voltar para a Homepage</a>
-		</center>
-		
+				
 	</body>
 
 </html>
