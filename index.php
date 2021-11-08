@@ -31,7 +31,11 @@
 		
 		<br>
 		
-		<table border=1 align="center">
+		<div id="produtos" style="overflow:auto;width:100%;height:200px">
+		
+		<table border=0 align="center">
+	
+			<thead>
 	
 			<tr bgcolor="#DDDDDD">
 				<th>Sabor</th>
@@ -39,6 +43,10 @@
 				<th>Tamanho</th>
 				<th>Preço (R$)</th>
 			</tr>
+			
+			</thead>
+			
+			<tbody>
 			
 			<?php
 
@@ -49,10 +57,10 @@
 
 					while($row = $result->fetch_assoc()) {
 						echo "<tr>\n";
-						echo "<td align='center'><b><br>". $row["sabor"] . "</b> <br><br> <img width='50%' src='imagens/sabores/". $row["imagem"] . "'> <br><br> </td>\n";
-						echo "<td>" . $row["ingredientes"] . "</td>\n";
-						echo "<td>" . $row["tamanho"] . "</td>\n";
-						echo "<td>" . $row["preco"] . "</td>\n";
+						echo "<td align='center' width='100px'> <br>" . $row["sabor"] . "</b> <br> <img width='90%' src='imagens/sabores/". $row["imagem"] . "'> <br> </td>\n";
+						echo "<td align='center'>" . $row["ingredientes"] . "</td>\n";
+						echo "<td align='center'>" . $row["tamanho"] . "</td>\n";
+						echo "<td align='center'>" . $row["preco"] . "</td>\n";
 						echo "</tr>\n";
 					}
 			
@@ -63,8 +71,13 @@
 				$conn->close();
 			?>
 
+			</tbody>
+			
 		</table>
 		
+		<!-- fecha a div produtos -->
+		</div>
+				
 		<br>
 		
 		<center>
