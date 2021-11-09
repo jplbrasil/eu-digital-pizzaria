@@ -23,7 +23,9 @@
 		<h2>Bem vindo à Pizzaria Brasileira</h2>
 		<hr>		
 		
+		<!--
 		<h3>Escolha um de nossos deliciosos sabores e faça seu pedido!</h3>
+		-->
 		
 		<p>Nossas pizzas são preparadas com ingredientes super selecionados e possuem um sabor sem igual! Confira!</p>
 	
