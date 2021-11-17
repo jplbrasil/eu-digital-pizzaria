@@ -10,22 +10,40 @@
 
 	<body>
 
-		<br>
-		
 		<center>
 
 		<img src="imagens/principal.jpg"> 
 		
 		<br>
-		<br>
 		
-		<hr>
-		<h2>Bem vindo à Pizzaria Brasileira</h2>
+		<h2>Bem vindo(a) à Pizzaria Brasileira</h2>
+				
+		<?php
+			
+			session_start();
+			
+			if(isset($_SESSION['cliente']))
+				echo "Olá, " . $_SESSION['cliente'] . " &nbsp <a href='cliente/logoff.php'>(sair)</a>\n";
+			else {
+
+				echo "<form action='cliente/autenticar.php'>\n";
+	  			echo "<table border=0>\n";		
+				echo "<tr>\n";
+				echo "<td><b>Entre com seu login de cliente</b> &nbsp </td>\n";
+				echo "<td>E-mail: <input type='text' name='email'></td>\n";
+				echo "<td>Senha: <td><input type='password' name='senha'></td>\n";
+				echo "<td><input type='submit' value='Entrar'></td>\n";
+				echo "<td><a href='cliente/cadastrar.php'>Ainda não sou cadastrado(a)</a></td>\n";
+				echo "</tr>\n";
+				echo "</table>\n";			
+				echo "</form>\n";
+			}
+			
+		?>
+		
 		<hr>		
 		
-		<!--
 		<h3>Escolha um de nossos deliciosos sabores e faça seu pedido!</h3>
-		-->
 		
 		<p>Nossas pizzas são preparadas com ingredientes super selecionados e possuem um sabor sem igual! Confira!</p>
 	
@@ -101,6 +119,6 @@
 		</center>
 
 	</body>
-
+	
 </html>
 
