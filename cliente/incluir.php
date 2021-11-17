@@ -24,11 +24,15 @@
 			$sql .= "'". $_REQUEST['nome'] . "'";
 			$sql .= ", '". $_REQUEST['email'] . "'";
 			$sql .= ", '". $_REQUEST['endereco'] . "'";
-			$sql .= ", '". $_REQUEST['senha'] . "'";
+			
+			// a funcao MD5 do MySQL gera um hash da string 'senha'
+			// assim, a senha nao e' gravada em texto plano
+			$sql .= ", MD5('". $_REQUEST['senha'] . "')";
+			
 			$sql .= ")";
 
 			if ($conn->query($sql) === TRUE)
-				echo "Cliente incluído com sucesso!";
+				echo "Cliente incluído(a) com sucesso!";
 			else
 				echo "Falha ao incluir cliente: " . $sql . "<br>" . $conn->error;
 
@@ -39,7 +43,7 @@
 		<br> <br>
 		
 		<center>
-		<a href="cadastro.php">Voltar para a tela de Cadastro</a>
+		<a href="../index.php">Voltar para a Homepage</a>
 		</center>
 
 	</body>
