@@ -11,19 +11,18 @@
 	<body>
 
 		<center>
-
 		<img src="imagens/principal.jpg"> 
-		
 		<br>
-		
-		<h2>Bem vindo(a) à Pizzaria Brasileira</h2>
+		<h2>Pizzaria Brasileira</h2>
 				
 		<?php
 			
 			session_start();
 			
-			if(isset($_SESSION['cliente']))
+			if(isset($_SESSION['cliente'])) {
 				echo "Olá, " . $_SESSION['cliente'] . " &nbsp <a href='cliente/logoff.php'>(sair)</a>\n";
+				echo " &nbsp &nbsp <a href='pedido/carrinho.php'>(meu carrinho) <img width='2%' src='imagens/carrinho.png'> </a>\n";
+			}
 			else {
 
 				echo "<form action='cliente/autenticar.php'>\n";
@@ -58,11 +57,16 @@
 			<thead>
 	
 			<tr bgcolor="#DDDDDD">
-				<th>Sabor</th>
-				<th>Imagem</th>				
-				<th>Ingredientes</th>
-				<th>Tamanho</th>
-				<th>Preço (R$)</th>
+				<th>sabor</th>
+				<th>imagem</th>				
+				<th>ingredientes</th>
+				<th>tamanho</th>
+				<th>preço (R$)</th>
+				
+				<?php
+					if(isset($_SESSION['cliente']))
+						echo "<th>incluir no pedido</th>\n";
+				?>
 			</tr>
 			
 			</thead>
@@ -77,13 +81,27 @@
 				if ($result->num_rows > 0) {
 
 					while($row = $result->fetch_assoc()) {
+						
+						//Esse form e' para permitir ao cliente incluir produtos no carrinho
+						echo "<form action='pedido/carrinho.php'>\n";
+						
 						echo "<tr>\n";
 						echo "<td align='center'>" . $row["sabor"] . "</td>\n";
 						echo "<td align='center'>" . "<img width='50%' src='imagens/sabores/". $row["imagem"] . "'></td>\n";
 						echo "<td align='center'>" . $row["ingredientes"] . "</td>\n";
 						echo "<td align='center'>" . $row["tamanho"] . "</td>\n";
 						echo "<td align='center'>" . $row["preco"] . "</td>\n";
+					
+						if(isset($_SESSION['cliente'])) {
+							echo "<td align='center'>\n";
+							echo "<input type='hidden' name='idProduto' value=" . $row["id"] . ">\n";
+							echo "<input type='submit' value='Incluir'>\n";
+							echo "</td>\n";
+						}
+						
 						echo "</tr>\n";
+						
+						echo "</form>\n";
 					}
 			
 				} else {
@@ -109,13 +127,13 @@
 		<br>
 		
 		<center>
-		<a href="produto/cadastro.php">Tela de Cadastro de Produtos</a>
+		<a href="produto/cadastro.php">Cadastro de Produtos</a>
 		</center>
 
 		<br>
 		
 		<center>
-		<a href="cliente/cadastro.php">Tela de Cadastro de Clientes</a>
+		<a href="cliente/cadastro.php">Cadastro de Clientes</a>
 		</center>
 
 	</body>
