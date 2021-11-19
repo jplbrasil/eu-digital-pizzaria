@@ -11,13 +11,14 @@
 	<body>
 
 		<center>
-		<img src="../imagens/principal.jpg"> 
+		<!-- <img src="../imagens/principal.jpg"> 
 		<br>
-		<h2>Pizzaria Brasileira</h2>
+		-->
+		<h1>Pizzaria Brasileira</h1>
 		
 		<br>
 		<hr>
-		<h3>Meu Carrinho :: Realizar Meu Pedido</h3>
+		<h3>Meu Carrinho</h3>
 		<hr>
 		<br>
 
@@ -61,13 +62,14 @@
 						if ($result->num_rows > 0) {
 					
 							echo "<table border=1 align='center'>\n";
+							echo "<caption><h3>Resumo dos Produtos Selecionados</h3></caption>\n";
 							echo "<thead>\n";
 							echo "<tr bgcolor='#DDDDDD'>\n";
-							echo "<th>Sabor</th>\n";
-							echo "<th>Tamanho</th>\n";
-							echo "<th>Preço (R$)</th>\n";
+							echo "<th>Produto</th>\n";
+							echo "<th>Categoria</th>\n";
+							echo "<th>Preço</th>\n";
 							echo "<th>Quantidade</th>\n";
-							echo "<th>Sub-total (R$)</th>\n";
+							echo "<th>Sub-total</th>\n";
 							echo "</tr>\n";
 							echo "</thead>\n";
 							echo "<tbody>\n";
@@ -76,15 +78,15 @@
 						
 							while($row = $result->fetch_assoc()) {
 								echo "<tr>\n";
-								echo "<td align='center'>" . $row["sabor"] . "</td>\n";
-								echo "<td align='center'>" . $row["tamanho"] . "</td>\n";
-								echo "<td align='center'>" . $row["preco"] . "</td>\n";
+								echo "<td align='center' style='padding:10px'>" . $row["titulo"] . "</td>\n";
+								echo "<td align='center' style='padding:10px'>" . $row["categoria"] . "</td>\n";
+								printf("<td align='center' style='padding:10px'> R$ %01.2f </td>", $row["preco"]);
 						
 								$quantidade = $_SESSION["carrinho"][$row["id"]];
-								echo "<td align='center'>" . $quantidade . "</td>\n";
+								echo "<td align='center' style='padding:10px'>" . $quantidade . "</td>\n";
 						
 								$subtotal = $quantidade * $row["preco"];
-								echo "<td align='center'>" . $subtotal . "</td>\n";
+								printf("<td align='center' style='padding:10px'> R$ %01.2f </td>", $subtotal);
 								$total = $total + $subtotal;
 								echo "</tr>\n";
 							}
@@ -93,7 +95,7 @@
 							echo "</table>\n";
 		
 							echo "<center>\n";
-							echo "<p>Valor total do pedido: R$ ". $total . "</p>\n";
+							printf("<p>Valor total do pedido: R$ %01.2f </p>\n", $total);
 							echo "</center>\n";
 			
 						} else
@@ -110,8 +112,8 @@
 		<br>
 		
 		<center>
-		<a href="../index.php">[ Adicionar produtos ]</a>
-		<a href="limpar_carrinho.php">[ Limpar carrinho ]</a>
+		<a href="../index.php">[ adicionar produtos ]</a>
+		<a href="limpar_carrinho.php">[ limpar carrinho ]</a>
 		</center>
 				
 	</body>

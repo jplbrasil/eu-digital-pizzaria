@@ -22,7 +22,7 @@
 		<?php
 
 			session_start();
-			echo "Olá, " . $_SESSION['cliente'] . ", todos os produtos foram retirados do seu carrinho!\n";
+			echo "Olá, " . strtok($_SESSION['cliente']," ") . ", todos os produtos foram retirados do seu carrinho!\n";
 			unset($_SESSION["carrinho"]);		
 		?>
 		</center>
