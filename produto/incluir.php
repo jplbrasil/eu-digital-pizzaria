@@ -20,11 +20,11 @@
 	
 		<?php
 
-			$sql = "INSERT INTO produto (sabor, imagem, ingredientes, tamanho, preco) VALUES (";
-			$sql .= "'". $_REQUEST['sabor'] . "'";
+			$sql = "INSERT INTO produto (titulo, categoria, imagem, descricao, preco) VALUES (";
+			$sql .= "'". $_REQUEST['titulo'] . "'";
+			$sql .= ", '". $_REQUEST['categoria'] . "'";
 			$sql .= ", '". $_REQUEST['imagem'] . "'";
-			$sql .= ", '". $_REQUEST['ingredientes'] . "'";
-			$sql .= ", '". $_REQUEST['tamanho'] . "'";
+			$sql .= ", '". $_REQUEST['descricao'] . "'";
 			$sql .= ", '". $_REQUEST['preco'] . "'";
 			$sql .= ")";
 

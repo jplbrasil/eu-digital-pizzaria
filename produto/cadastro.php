@@ -27,10 +27,23 @@
 			<table border=1 align="center">
 	
 				<tr>
-					<td>Sabor</td>
-					<td><input type="text" name="sabor"></td>
+					<td>Título</td>
+					<td><input type="text" name="titulo"></td>
 				</tr>
 
+				<tr>
+					<td>Categoria</td>
+					<td>
+						<select name="categoria">
+							<option value="Bebidas">Bebidas</option>
+							<option value="Entradas">Entradas</option>
+							<option value="Massas">Massas</option>
+							<option value="Pizzas">Pizzas</option>
+							<option value="Sobremesas">Sobremesas</option>
+						</select>
+					</td>
+				</tr>
+				
 				<tr>
 					<td>Imagem</td>
 					<td>
@@ -47,23 +60,14 @@
 							<option value="palmito.jpg">palmito.jpg</option>
 							<option value="portuguesa.jpg">portuguesa.jpg</option>
 							<option value="quatro_queijos.jpg">quatro_queijos.jpg</option>
+							<option value="produto.png">Produto Genérico</option>
 						</select>
 					</td>
 				</tr>
 
 				<tr>
-					<td>Ingredientes</td>
-					<td><input type="text" name="ingredientes"></td>
-				</tr>
-
-				<tr>
-					<td>Tamanho</td>
-					<td>
-						<input type="radio" name="tamanho" value="Gigante">Gigante</input>
-						<input type="radio" name="tamanho" value="Grande">Grande</input>
-						<input type="radio" name="tamanho" value="Média">Média</input>
-						<input type="radio" name="tamanho" value="Pequena">Pequena</input>
-					</td>	
+					<td>Descrição</td>
+					<td><textarea name="descricao" rows=3 cols=60></textarea></td>
 				</tr>
 
 				<tr>
@@ -92,23 +96,23 @@
 		<table border=1 align="center">
 	
 			<tr>
-				<th>Sabor</th>
-				<th>Tamanho</th>
+				<th>Título</th>
+				<th>Categoria</th>
 				<th>Preco</th>
 				<th>Ação</th>
 			</tr>
 			
 			<?php
 			
-				$sql = "SELECT id, sabor, tamanho, preco FROM produto";
+				$sql = "SELECT id, titulo, categoria, preco FROM produto";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 
 					while($row = $result->fetch_assoc()) {
 						echo "<tr>\n";
-						echo "<td>" . $row["sabor"] . "</td>\n";
-						echo "<td>" . $row["tamanho"] . "</td>\n";
+						echo "<td>" . $row["titulo"] . "</td>\n";
+						echo "<td>" . $row["categoria"] . "</td>\n";
 						echo "<td>" . $row["preco"] . "</td>\n";
 						echo "<td><a href='excluir.php?id=" . $row["id"] . "'>&nbsp &nbsp Excluir &nbsp &nbsp</a></td>\n";
 						echo "</tr>\n";
