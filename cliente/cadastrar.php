@@ -24,28 +24,79 @@
 		
 		<form action="incluir.php">
 	  
-			<table border=1 align="center">
+			<table border=0 align="center">
+	
+				<caption><h3>Identificação</h3></caption>
 	
 				<tr>
-					<td>Nome</td>
-					<td><input type="text" name="nome"></td>
+					<td>Nome completo</td>
+					<td><input type="text" name="nome" size=50></td>
 				</tr>
 
 				<tr>
 					<td>E-mail</td>
-					<td><input type="text" name="email"></td>
+					<td><input type="text" name="email" size=50></td>
+				</tr>
+
+			</table>
+		
+			<table border=0 align="center">
+
+				<caption><h3>Endereço</h3></caption>
+
+				<tr>
+					<td>Rua / Avenida</td>
+					<td colspan=2><input type="text" name="rua" size=60></td>
 				</tr>
 
 				<tr>
-					<td>Endereço</td>
-					<td><input type="text" name="endereco"></td>
+					<td>Número</td>
+					<td><input type="text" name="numero" size=10></td>
 				</tr>
 
 				<tr>
-					<td>Senha</td>
-					<td><input type="password" name="senha"></td>
+					<td colspan=2>
+						<input type="radio" name="casa_apto" value="Casa" checked>Casa</input>
+						<input type="radio" name="casa_apto" value="Apartamento">Apartamento</input>
+					</td>
 				</tr>
-			
+
+				<tr>
+					<td>Bairro</td>
+					<td><input type="text" name="bairro"></td>
+				</tr>
+
+				<tr>
+					<td>Cidade</td>
+					<td><input type="text" name="cidade"></td>
+				</tr>
+
+				<tr>
+					<td>Estado</td>
+					<td><input type="text" name="estado"></td>
+				</tr>
+
+				<tr>
+					<td>CEP</td>
+					<td><input type="text" name="cep"></td>
+				</tr>
+				
+			</table>
+		
+			<table border=0 align="center">
+
+				<caption><h3>Defina uma Senha</h3></caption>
+				
+				<tr>
+					<td>Nova senha</td>
+					<td><input type="password" name="senha01"></td>
+				</tr>
+
+				<tr>
+					<td>Repita sua senha</td>
+					<td><input type="password" name="senha02"></td>
+				</tr>
+				
 			</table>
 		
 			<br>
@@ -55,12 +106,6 @@
 			</center>
 
 		</form>
-
-		<br>
-		
-		<center>
-		<a href="../index.php">Voltar para a Homepage</a>
-		</center>
 				
 	</body>
 

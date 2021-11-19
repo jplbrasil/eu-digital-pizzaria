@@ -36,7 +36,7 @@
 				if(MD5($_REQUEST['senha']) == $row["senha"]) {
 					session_start();
 					$_SESSION['cliente'] = $row["nome"];
-					echo "Bem vindo(a) " . $_SESSION['cliente'] . "!\n";
+					echo "Bem vindo(a) " . strtok($_SESSION['cliente']," ") . "!\n";
 				}
 				
 				else
