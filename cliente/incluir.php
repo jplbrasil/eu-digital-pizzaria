@@ -30,16 +30,20 @@
 			}
 		
 			else {
-				$sql = "INSERT INTO cliente (nome, email, endereco, senha) VALUES (";
+				
+				$endereco = $_REQUEST['rua'] . ", " . $_REQUEST['numero'] . ".";
+				if($_REQUEST['casa_apto'] == "Casa")
+					$endereco .=  " Casa.";
+				else
+					$endereco .=  " Apartamento: " . $_REQUEST['apto_numero'] . ".";		
+				$endereco .= " Bairro: " . $_REQUEST['bairro'] . ". " . $_REQUEST['cidade'] . ". " . $_REQUEST['estado'] . ". CEP: " . $_REQUEST['cep'];
+
+				$sql = "INSERT INTO cliente (nome, email, telefone, endereco, senha) VALUES (";
 				$sql .= "'". $_REQUEST['nome'] . "'";
 				$sql .= ", '". $_REQUEST['email'] . "'";
-			
-				$endereco = $_REQUEST['rua'] . ", " . $_REQUEST['numero'] . ". " . $_REQUEST['casa_apto'] . ". Bairro: " . $_REQUEST['bairro'] . ". " . $_REQUEST['cidade'] . ". " . $_REQUEST['estado'] . ". CEP: " . $_REQUEST['cep'];
+				$sql .= ", '". $_REQUEST['telefone'] . "'";				
 				$sql .= ", '". $endereco . "'";
-			
-				// a funcao MD5 do MySQL gera um hash da string 'senha'
-				// assim, a senha nao e' gravada em texto plano
-				$sql .= ", MD5('". $_REQUEST['senha01'] . "')";
+				$sql .= ", '". MD5($_REQUEST['senha01']) . "'";
 			
 				$sql .= ")";
 

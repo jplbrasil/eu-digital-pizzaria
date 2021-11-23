@@ -4,20 +4,14 @@
 
 <html>
 
-	<head>
-		<title> ..:: Pizzaria Brasileira ::.. </title>
-	</head>
-
 	<body>
-
-		<br>
 		
 		<center>
 
-		<hr>
-		<h2>Pizzaria Brasileira - Cadastro de Clientes</h2>
-		<hr>		
-	
+		<h2>Cadastro de Clientes</h2>	
+
+		<br>
+		
 		<?php
 
 			$sql = "DELETE FROM cliente WHERE id = '" . $_REQUEST['id'] . "'";
@@ -30,11 +24,11 @@
 			$conn->close();
 			
 		?>
-						
-		<br> <br>
 		
-		<center>
-		<a href="cadastro.php">Voltar para a tela de Cadastro</a>
+		<br> <br>
+
+		<a href="cadastro.php">Voltar</a>
+
 		</center>
 
 	</body>

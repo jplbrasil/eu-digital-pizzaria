@@ -30,12 +30,17 @@
 	
 				<tr>
 					<td>Nome completo</td>
-					<td><input type="text" name="nome" size=50></td>
+					<td><input type="text" name="nome" size="50"></td>
 				</tr>
 
 				<tr>
 					<td>E-mail</td>
-					<td><input type="text" name="email" size=50></td>
+					<td><input type="text" name="email" size="50"></td>
+				</tr>
+
+				<tr>
+					<td>Telefone</td>
+					<td><input type="text" name="telefone" size="20"></td>
 				</tr>
 
 			</table>
@@ -46,39 +51,40 @@
 
 				<tr>
 					<td>Rua / Avenida</td>
-					<td colspan=2><input type="text" name="rua" size=60></td>
+					<td colspan=2><input type="text" name="rua" size="60"></td>
 				</tr>
 
 				<tr>
 					<td>Número</td>
-					<td><input type="text" name="numero" size=10></td>
+					<td><input type="text" name="numero" size="10"></td>
 				</tr>
 
 				<tr>
 					<td colspan=2>
 						<input type="radio" name="casa_apto" value="Casa" checked>Casa</input>
 						<input type="radio" name="casa_apto" value="Apartamento">Apartamento</input>
+						<input type="text" name="apto_numero" size="10">
 					</td>
 				</tr>
 
 				<tr>
 					<td>Bairro</td>
-					<td><input type="text" name="bairro"></td>
+					<td><input type="text" name="bairro" size="30"></td>
 				</tr>
 
 				<tr>
 					<td>Cidade</td>
-					<td><input type="text" name="cidade"></td>
+					<td><input type="text" name="cidade" size="30"></td>
 				</tr>
 
 				<tr>
 					<td>Estado</td>
-					<td><input type="text" name="estado"></td>
+					<td><input type="text" name="estado" size="30"></td>
 				</tr>
 
 				<tr>
 					<td>CEP</td>
-					<td><input type="text" name="cep"></td>
+					<td><input type="text" name="cep" size="30"></td>
 				</tr>
 				
 			</table>
@@ -89,12 +95,12 @@
 				
 				<tr>
 					<td>Nova senha</td>
-					<td><input type="password" name="senha01"></td>
+					<td><input type="password" name="senha01" size="30"></td>
 				</tr>
 
 				<tr>
 					<td>Repita sua senha</td>
-					<td><input type="password" name="senha02"></td>
+					<td><input type="password" name="senha02" size="30"></td>
 				</tr>
 				
 			</table>

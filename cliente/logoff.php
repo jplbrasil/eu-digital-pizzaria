@@ -22,7 +22,9 @@
 		<?php
 
 			session_start();
-			echo "Olá, " . strtok($_SESSION['cliente']," ") . ", sua sessão foi encerrada!\n";
+			echo strtok($_SESSION['cliente']," ") . ", sua sessão foi encerrada.\n";
+			echo "<BR><BR>\n";			
+			echo "Esperamos que volte novamente em breve!\n";
 			session_unset();
 			session_destroy();
 		
