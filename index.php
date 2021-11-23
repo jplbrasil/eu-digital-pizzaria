@@ -126,7 +126,7 @@
 							echo "<br><br>\n";
 							echo "<form action='pedido/carrinho.php'>\n";
 							echo "<input type='hidden' name='idProduto' value=" . $row["id"] . ">\n";
-							echo "<input type='submit' value='Incluir'>\n";
+							echo "<input type='submit' value='incluir no meu carrinho'>\n";
 							echo "</form>\n";
 						}
 
