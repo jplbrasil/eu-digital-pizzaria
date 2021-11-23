@@ -4,19 +4,13 @@
 
 <html>
 
-	<head>
-		<title> ..:: Pizzaria Brasileira ::.. </title>
-	</head>
-
 	<body>
 
-		<br>
-		
 		<center>
-
-		<hr>
-		<h2>Pizzaria Brasileira - Cadastro de Produtos</h2>
-		<hr>		
+		
+		<h2>Cadastro de Produtos</h2>
+		
+		<br>		
 	
 		<?php
 
@@ -30,11 +24,11 @@
 			$conn->close();
 			
 		?>
-						
+
 		<br> <br>
 		
-		<center>
-		<a href="cadastro.php">Voltar para a tela de Cadastro</a>
+		<a href="cadastro.php">Voltar</a>
+		
 		</center>
 
 	</body>
