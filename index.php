@@ -125,7 +125,8 @@
 						if(isset($_SESSION['cliente'])) {
 							echo "<br><br>\n";
 							echo "<form action='pedido/carrinho.php'>\n";
-							echo "<input type='hidden' name='idProduto' value=" . $row["id"] . ">\n";
+							echo "<input type='hidden' name='idProduto' value='" . $row["id"] . "'>\n";
+							echo "<input type='hidden' name='operacao' value='adicionar'>\n";
 							echo "<input type='submit' value='incluir no meu carrinho'>\n";
 							echo "</form>\n";
 						}
