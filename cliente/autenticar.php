@@ -25,7 +25,7 @@
 		<center>
 		<?php
 		
-			$sql = "SELECT nome, senha FROM cliente";
+			$sql = "SELECT id, nome, senha FROM cliente";
 			$sql =  $sql . " WHERE email = '" . $_REQUEST['email'] ."'";
 			$result = $conn->query($sql);
 
@@ -35,6 +35,7 @@
 				
 				if(MD5($_REQUEST['senha']) == $row["senha"]) {
 					session_start();
+					$_SESSION['idCliente'] = $row["id"];
 					$_SESSION['cliente'] = $row["nome"];
 					echo "Bem vindo(a) " . strtok($_SESSION['cliente']," ") . "!\n";
 				}
