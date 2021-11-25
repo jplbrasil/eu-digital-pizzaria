@@ -13,22 +13,20 @@
 		<table border=1 align="center">
 	
 			<tr>
-				<th>Nome</th>
-				<th>Email</th>
+				<th>Id</th>
 				<th>Ação</th>
 			</tr>
 			
 			<?php
 			
-				$sql = "SELECT id, nome, email FROM cliente";
+				$sql = "SELECT * FROM pedido";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 
 					while($row = $result->fetch_assoc()) {
 						echo "<tr>\n";
-						echo "<td>" . $row["nome"] . "</td>\n";
-						echo "<td>" . $row["email"] . "</td>\n";
+						echo "<td>" . $row["id"] . "</td>\n";
 						echo "<td><a href='excluir.php?id=" . $row["id"] . "'>&nbsp &nbsp Excluir &nbsp &nbsp</a></td>\n";
 						echo "</tr>\n";
 					}
@@ -45,4 +43,3 @@
 	</body>
 
 </html>
-

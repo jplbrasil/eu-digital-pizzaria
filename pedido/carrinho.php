@@ -16,29 +16,50 @@
 		-->
 		<h1>Pizzaria Brasileira</h1>
 		
-		<br>
-		<hr>
+		<br> <hr>
+
 		<h3>Meu Carrinho</h3>
-		<hr>
-		<br>
 
 			<?php
 
 				session_start();
 				
 				if(isset($_SESSION['cliente'])) {
+
+					echo "<table border='0' align='center'>\n";
+					echo "<tr>\n";
+					echo "<td align='center' valign='top' style='padding:10px'>\n";
+					echo "<a href='../index.php'><b>adicionar mais produtos</b></a>\n";
+					echo "</td>\n";
+					echo "<td align='center' valign='top' style='padding:10px'>\n";
+					echo "<a href='limpar_carrinho.php'><b>limpar todo o carrinho</b></a>\n";
+					echo "</td>\n";
+					echo "<td align='center' style='padding:10px'>\n";
+					echo "<form action='pagamento.php' method='GET'>\n";
+					echo "<input type='submit' value='criar um pedido >>'>\n";
+					echo "</form>\n";
+					echo "</td>\n";
+					echo "</tr>\n";
+					echo "</table>\n";
+					
+					echo "<hr>\n";
 				
-					if(isset($_REQUEST["idProduto"])) {
-					
+					if(isset($_REQUEST["idProduto"]) && isset($_REQUEST["operacao"])) {
+						
 						if(!isset($_SESSION["carrinho"]))
-							$_SESSION["carrinho"][$_REQUEST["idProduto"]] = 1;
+							$_SESSION["carrinho"][$_REQUEST["idProduto"]] = 0;
+
+						if(!isset($_SESSION["carrinho"][$_REQUEST["idProduto"]]))
+							$_SESSION["carrinho"][$_REQUEST["idProduto"]] = 0;
 					
-						else if(!isset($_SESSION["carrinho"][$_REQUEST["idProduto"]]))
-							$_SESSION["carrinho"][$_REQUEST["idProduto"]] = 1;
-					
-						else
-							$_SESSION["carrinho"][$_REQUEST["idProduto"]] += 1;
-					
+							if($_REQUEST["operacao"] == "adicionar")
+								$_SESSION["carrinho"][$_REQUEST["idProduto"]] += 1;
+								
+							else if($_REQUEST["operacao"] == "subtrair")
+								if($_SESSION["carrinho"][$_REQUEST["idProduto"]] > 1)
+									$_SESSION["carrinho"][$_REQUEST["idProduto"]] -= 1;
+								else
+									unset($_SESSION["carrinho"][$_REQUEST["idProduto"]]);
 					}
 				
 					/*
@@ -47,21 +68,16 @@
 					//*/
 					
 					if(isset($_SESSION["carrinho"])) {
-					
+											
 						$sql = "SELECT * FROM produto WHERE id IN (-1";
-					
 						foreach($_SESSION["carrinho"] as $idTemp => $qtdeTemp)
 							$sql .= "," .$idTemp;
-
 						$sql .= ")";
-					
-						//echo $sql;
-				
 						$result = $conn->query($sql);
 			
 						if ($result->num_rows > 0) {
 					
-							echo "<table border=1 align='center'>\n";
+							echo "<table border='1' align='center'>\n";
 							echo "<caption><h3>Resumo dos Produtos Selecionados</h3></caption>\n";
 							echo "<thead>\n";
 							echo "<tr bgcolor='#DDDDDD'>\n";
@@ -83,7 +99,11 @@
 								printf("<td align='center' style='padding:10px'> R$ %01.2f </td>", $row["preco"]);
 						
 								$quantidade = $_SESSION["carrinho"][$row["id"]];
-								echo "<td align='center' style='padding:10px'>" . $quantidade . "</td>\n";
+								echo "<td align='center' style='padding:10px' width='20px'>";
+								echo "<a href='carrinho.php?idProduto=" . $row["id"] . "&operacao=subtrair'><img width='15%' src='../imagens/subtracao.png'></a>";
+								echo "&nbsp &nbsp" . $quantidade . "&nbsp &nbsp";
+								echo "<a href='carrinho.php?idProduto=" . $row["id"] . "&operacao=adicionar'><img width='15%' src='../imagens/adicao.png'></a>";
+								echo "</td>\n";
 						
 								$subtotal = $quantidade * $row["preco"];
 								printf("<td align='center' style='padding:10px'> R$ %01.2f </td>", $subtotal);
@@ -95,7 +115,7 @@
 							echo "</table>\n";
 		
 							echo "<center>\n";
-							printf("<p>Valor total do pedido: R$ %01.2f </p>\n", $total);
+							printf("<p>Soma dos produtos: R$ %01.2f </p>\n", $total);
 							echo "</center>\n";
 			
 						} else
@@ -104,18 +124,13 @@
 						$conn->close();
 					
 					} else
-						echo "<p>Seu carrinho ainda não possui nenhum produto.</p>\n";					
+						echo "<p>Seu carrinho ainda não possui nenhum produto.</p>\n";
+
+					echo "<br> <hr> <br>\n";
 				}
 			
 			?>
-		
-		<br>
-		
-		<center>
-		<a href="../index.php">[ adicionar produtos ]</a>
-		<a href="limpar_carrinho.php">[ limpar carrinho ]</a>
-		</center>
-				
+						
 	</body>
 	
 </html>

@@ -15,42 +15,67 @@
 		<center>
 
 		<hr>
-		<h2>Pizzaria Brasileira - Cadastro de Clientes</h2>
+		<h2>Pizzaria Brasileira - Cadastro de Pedidos</h2>
 		<hr>		
 	
 		<?php
 
-			if($_REQUEST['senha01'] != $_REQUEST['senha02']){
-				
-				echo "Atenção: a senha informada no segundo campo não corresponde à primeira. Por favor, tente novamente.";
-				echo "<br> <br>\n";
-				echo "<center>\n";
-				echo "<a href='cadastrar.php'>Voltar ao Formulário de Cadastro</a>\n";
-				echo "</center>\n";
-			}
+				session_start();
 		
-			else {
-				$sql = "INSERT INTO cliente (nome, email, endereco, senha) VALUES (";
-				$sql .= "'". $_REQUEST['nome'] . "'";
-				$sql .= ", '". $_REQUEST['email'] . "'";
-			
-				$endereco = $_REQUEST['rua'] . ", " . $_REQUEST['numero'] . ". " . $_REQUEST['casa_apto'] . ". Bairro: " . $_REQUEST['bairro'] . ". " . $_REQUEST['cidade'] . ". " . $_REQUEST['estado'] . ". CEP: " . $_REQUEST['cep'];
-				$sql .= ", '". $endereco . "'";
-			
-				// a funcao MD5 do MySQL gera um hash da string 'senha'
-				// assim, a senha nao e' gravada em texto plano
-				$sql .= ", MD5('". $_REQUEST['senha01'] . "')";
-			
+				$sql = "INSERT INTO pedido (data, hora, id_cliente, tipo_pagamento, tipo_entrega, valor_produtos, valor_frete, valor_total, status) VALUES (";
+				$sql .= "'". date("Y-m-d", time()) . "'";
+				$sql .= ", '". date("H:i:s", time()) . "'";
+				$sql .= ", '". $_SESSION['idCliente'] . "'";
+				$sql .= ", '". $_REQUEST['tipo_pagamento'] . "'";
+				$sql .= ", '". $_REQUEST['tipo_entrega'] . "'";
+				$sql .= ", '". $_REQUEST['valor_produtos'] . "'";
+				$sql .= ", '". $_REQUEST['valor_frete'] . "'";
+				$sql .= ", '". $_REQUEST['valor_total'] . "'";
+				$sql .= ", '". $_REQUEST['status'] . "'";
 				$sql .= ")";
-
-				if ($conn->query($sql) === TRUE)
-					echo "Cliente incluído(a) com sucesso!";
+				
+				//echo "<br><hr>" . $sql . "<hr><br>\n";
+				
+				///*
+				if ($conn->query($sql) === TRUE) {
+					$id_pedido = $conn->insert_id;
+					echo "Pedido incluído com sucesso!";
+				}
 				else
-					echo "Falha ao incluir cliente: " . $sql . "<br>" . $conn->error;
+					echo "Falha ao incluir pedido: " . $sql . "<br>" . $conn->error;
+
+				//*/
+				
+				$sql = "SELECT * FROM produto WHERE id IN (-1";
+				foreach($_SESSION["carrinho"] as $idTemp => $qtdeTemp)
+					$sql .= "," .$idTemp;
+				$sql .= ")";
+				$result = $conn->query($sql);
+				
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+
+						$temp = "INSERT INTO itens_pedido (id_pedido, id_produto, quantidade, preco) VALUES (";
+						$temp .= "'" . $id_pedido . "'";
+						$temp .= ", '" . $row["id"] . "'";
+						$temp .= ", '" . $_SESSION["carrinho"][$row["id"]] . "'";
+						$temp .= ", '" . $row["preco"] . "'";
+						$temp .= ")";
+						
+						//echo "<br><hr>" . $temp . "<hr><br>\n";
+
+						//*
+						if ($conn->query($temp) === FALSE)
+							echo "Falha ao incluir itens do pedido: " . $temp . "<br>" . $conn->error;
+
+						//*/
+					}
+				}
 
 				$conn->close();
-			}
-			
+
+				unset($_SESSION["carrinho"]);
+	
 		?>
 		
 		<br> <br>
@@ -62,4 +87,3 @@
 	</body>
 
 </html>
-

@@ -8,19 +8,28 @@
 		
 		<center>
 
-		<h2>Cadastro de Clientes</h2>	
+		<h2>Cadastro de Pedidos</h2>	
 
 		<br>
 		
 		<?php
 
-			$sql = "DELETE FROM cliente WHERE id = '" . $_REQUEST['id'] . "'";
+			$sql = "DELETE FROM pedido WHERE id = '" . $_REQUEST['id'] . "'";
 
 			if ($conn->query($sql) === TRUE)
-				echo "Cliente excluído com sucesso!";
+				echo "Pedido excluído com sucesso!";
 			else
-				echo "Falha ao excluir cliente: " . $sql . "<br>" . $conn->error;
+				echo "Falha ao excluir pedido: " . $sql . "<br>" . $conn->error;
 
+			echo "<BR>\n";
+			
+			$sql = "DELETE FROM itens_pedido WHERE id_pedido = '" . $_REQUEST['id'] . "'";
+
+			if ($conn->query($sql) === TRUE)
+				echo "Itens do pedido excluídos com sucesso!";
+			else
+				echo "Falha ao excluir itens do pedido: " . $sql . "<br>" . $conn->error;
+			
 			$conn->close();
 			
 		?>
