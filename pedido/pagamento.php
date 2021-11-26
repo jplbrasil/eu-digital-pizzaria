@@ -129,6 +129,9 @@
 					echo "<br>\n";
 					echo "<input type='submit' value='enviar o pedido'>\n";
 					
+					echo "<br>\n";
+					echo "<a href='carrinho.php'><b>rever meu carrinho</b></a>\n";
+					
 					echo "</td>\n";
 					echo "</tr>\n";
 					echo "</table>\n";
