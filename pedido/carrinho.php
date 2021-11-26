@@ -72,7 +72,7 @@
 						$sql = "SELECT * FROM produto WHERE id IN (-1";
 						foreach($_SESSION["carrinho"] as $idTemp => $qtdeTemp)
 							$sql .= "," .$idTemp;
-						$sql .= ")";
+						$sql .= ") ORDER BY categoria, produto";
 						$result = $conn->query($sql);
 			
 						if ($result->num_rows > 0) {
