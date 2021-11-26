@@ -98,7 +98,7 @@
 						$sql = "SELECT * FROM produto WHERE categoria = '" . $_REQUEST["categoria"] . "'";
 				}
 				
-				$sql .= " ORDER BY categoria, produto";
+				$sql .= " ORDER BY categoria, titulo";
 				
 				$result = $conn->query($sql);
 
