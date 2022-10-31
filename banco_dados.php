@@ -9,7 +9,7 @@
 	//*/
 
 	// Dados para conexao 'a base de dados MySQL da nuvem Heroku, aplicativo eu-digital-pizzaria
-	/*
+	///*
 	$servername = "us-cdbr-east-04.cleardb.com";
 	$username = "bff01010138ab1";
 	$password = "e04e9d48";
@@ -17,7 +17,7 @@
 	//*/
 				
 	// Create connection MySQL
-	/*
+	///*
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
 	// Check connection
@@ -28,5 +28,5 @@
 	//echo "Conexão com o banco de dados realizada com sucesso! (base de dados = " . $dbname . ")\n";
 
 	//Dados para conexao local em base de dados SQLite
-	$conn = new SQLite3('localdb.db');
+	//$conn = new SQLite3('localdb.db');
 ?>
